@@ -37,6 +37,5 @@ userSchema
 
 module.exports = User;
 
-// Everything below here would probably be in server.js
 
 const User = mongoose.model('User',userSchema);

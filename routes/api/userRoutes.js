@@ -7,3 +7,4 @@ const {
 } = require('../../controllers/userController')
 
 
+router.route('/').get(getUsers).post(createUser);
