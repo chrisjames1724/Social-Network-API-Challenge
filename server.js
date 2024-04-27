@@ -9,6 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`running on port ${PORT}!`);
+  });
+});
+
 // app.get async (req, res) => {
 //     try {
 //         const result = await
