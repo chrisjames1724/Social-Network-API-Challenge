@@ -59,11 +59,11 @@ module.exports = {
       rest.status(500).json(err);
     }
   },
-  async addUserFriend(res, req) {
+  async addUserFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { friends: req.body } },
+        { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
 
@@ -72,7 +72,7 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500), json(err);
+      res.status(500).json(err);
     }
   },
   async removeUserFriend(res, req) {

@@ -11,11 +11,12 @@ module.exports = {
   },
   async getSingleThought(req, res) {
     try {
-      const thought = await thought.findOne({ _id: req.params.thoughtId });
-      if (!post) {
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
+      if (!thought) {
         return res.status(404).json({ message: "No post with that ID" });
       }
-    } catch (error) {
+      res.json(thought);
+    } catch (err) {
       res.status(500).json(err);
     }
   },
@@ -29,7 +30,7 @@ module.exports = {
       );
       if (!user) {
         return res.status(404).json({
-          message: "Video created, but found no user with that ID",
+          message: "Thought created, but found no user with that ID",
         });
       }
       res.json("created the thought!");
@@ -61,7 +62,7 @@ module.exports = {
       });
 
       if (!thought) {
-        return res.status(404).json({ message: "No video with this id!" });
+        return res.status(404).json({ message: "No thought with this id!" });
       }
 
       const user = await User.findOneAndUpdate(
@@ -73,7 +74,7 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ message: "Video created but no user with this id!" });
+          .json({ message: "Thought created but no user with this id!" });
       }
 
       res.json({ message: "Thought successfully deleted!" });
@@ -115,5 +116,4 @@ module.exports = {
       res.status(500).json(err);
     }
   },
- 
 };
