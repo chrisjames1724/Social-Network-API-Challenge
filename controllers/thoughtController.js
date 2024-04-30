@@ -50,7 +50,7 @@ module.exports = {
       if (!thought) {
         return res.status(404).json({ message: "No thought with that ID" });
       }
-      res.json(thought);
+      res.json(Thought);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -61,7 +61,7 @@ module.exports = {
         _id: req.params.thoughtId,
       });
 
-      if (!thought) {
+      if (!Thought) {
         return res.status(404).json({ message: "No thought with this id!" });
       }
 
@@ -78,7 +78,7 @@ module.exports = {
       }
 
       res.json({ message: "Thought successfully deleted!" });
-    } catch (error) {
+    } catch (err) {
       res.status(500).json(err);
     }
   },
