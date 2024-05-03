@@ -22,6 +22,9 @@ router
 
 router.route("/:thoughtId/reactions").post(addThoughtReaction);
 
-router.route("/:thoughtId/reactions/reactionId").delete(removeThoughtReaction);
+
+router.route("/:thoughtId/reactions/:reactionId").delete(removeThoughtReaction);
 
 module.exports = router;
+
+// http://localhost:3001/api/thoughts/662ef6e2d7d173e58699622d/reactions/66318bc270d55714b9a4e803

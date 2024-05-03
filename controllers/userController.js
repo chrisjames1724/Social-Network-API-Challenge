@@ -15,7 +15,7 @@ module.exports = {
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId });
- 
+
       if (!user) {
         return res.status(404).json({ message: "No user with that ID" });
       }
@@ -78,7 +78,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  async removeUserFriend(res, req) {
+  async removeUserFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
