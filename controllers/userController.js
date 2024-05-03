@@ -86,7 +86,7 @@ module.exports = {
         { runValidators: true, new: true }
       );
 
-      if (!thought) {
+      if (!user) {
         return res.status(404).json({ message: "No thought with this id!" });
       }
 

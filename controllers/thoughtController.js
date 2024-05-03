@@ -88,10 +88,10 @@ module.exports = {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { reactions: req.body } },
+        { $addToSet: { reactions: req.params.reactionId } },
         { runValidators: true, new: true }
       );
-      if (!video) {
+      if (!thought) {
         return res.status(404).json({ message: "No thought with this id!" });
       }
 
